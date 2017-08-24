@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import AddNote from './AddNote';
-import Modal from 'react-bootstrap/lib';
 
 class Button extends Component {
-  //TODO: show a modal with form to fill
-  onClick() {
-    return <Modal />;
+  constructor(props) {
+    super(props);
+
+    this.state = { clicked: false };
   }
+
+  onClick = () => {
+    this.setState({ clicked: true });
+  }
+
   render() {
     return (
-      <button className="btn" onClick={this.props.onClick}>PLUS</button>
+      <div>
+        <button className="btn" onClick={this.onClick}>PLUS</button>
+        {this.state.clicked ? <AddNote className="editable" /> : null}
+      </div>
     );
   }
 }
