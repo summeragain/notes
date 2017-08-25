@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Note from './Note';
 import Button from './Button';
+import './List.css';
 
 class List extends Component {
   getList() {
