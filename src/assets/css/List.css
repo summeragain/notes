@@ -1,0 +1,17 @@
+body {
+  background-color: #444c57; }
+
+.note-wrapper {
+  margin-bottom: 25px; }
+  .note-wrapper .white-panel {
+    text-align: center;
+    background: #ffffff;
+    color: #444c57;
+    height: 250px;
+    -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
+    .note-wrapper .white-panel .note-title {
+      color: #ff865c;
+      background: #f4f4f4;
+      padding: 3px;
+      margin-bottom: 15px; }

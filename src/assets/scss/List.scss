@@ -1,0 +1,26 @@
+$light-background-color: #f4f4f4;
+$dark-background-color: #444c57;
+
+body {
+    background-color: $dark-background-color;
+}
+.note-wrapper {
+    margin-bottom: 25px;
+
+    .white-panel {
+        text-align: center;
+        background: #ffffff;
+        color: $dark-background-color;
+        height: 250px;
+        -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+
+        .note-title {
+            color: #ff865c;
+            background: $light-background-color;
+            padding: 3px;
+            margin-bottom: 15px;
+        }
+    }
+
+}

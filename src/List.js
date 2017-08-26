@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Note from './Note';
-import Button from './Button';
-import './List.css';
+import Button from './AddNoteButton';
+import './assets/css/List.css';
 
 class List extends Component {
   getList() {
     return [
       { id: 101, title: 'first note', content: 'Hi! Let me introduce this note.', tags: null },
       { id: 102, title: 'second note', content: 'What do people write in notes?', tags: null },
-      { id: 103, title: 'last note', content: 'Some important info', tags: null }
+      { id: 103, title: 'third note', content: 'Some important info', tags: null },
+      { id: 104, title: 'last note', content: 'or not so important', tags: null }
     ];
   }
   render() {
