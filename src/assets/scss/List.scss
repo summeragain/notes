@@ -24,3 +24,10 @@ body {
     }
 
 }
+
+.add-note {
+    input {
+        border: none;
+        border-bottom: 1px solid $dark-background-color;
+    }
+}
