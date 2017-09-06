@@ -23,16 +23,17 @@ class List extends Component {
     ];
   }
 
-  openNoteModal = () => {
+  showNoteModal = () => {
     this.setState({ isAddingNewNote: true });
   }
 
-  onCloseNoteModal = () => {
+  hideNoteModal = () => {
     this.setState({ isAddingNewNote: false });
   }
 
-  addNewNote = (data) => {
+  addNewNote(data) {
     let newNoteData = { id: 104, title: 'no number note', content: 'new note', tags: null };
+    this.setState({ isAddingNewNote: false });
     this.state.list.unshift(newNoteData);
   }
 
@@ -44,8 +45,8 @@ class List extends Component {
     return (
       <div className="container">
         <div className="menu-bar">
-          <Button onClick={this.openNoteModal}>+</Button>
-          <AddNoteModal onClose={this.onCloseNoteModal} visible={this.state.isAddingNewNote} onSubmit={this.addNewNote} />
+          <Button onClick={this.showNoteModal}>+</Button>
+          <AddNoteModal onClose={this.hideNoteModal} visible={this.state.isAddingNewNote} onSubmit={(data) => this.addNewNote(data)} />
         </div>
         <div className="list-wrapper">
           {listItems}

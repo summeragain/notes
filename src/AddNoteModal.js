@@ -16,9 +16,8 @@ class AddNoteButton extends Component {
 
   addNote() {
     //todo: get data
-    //add new note to list
-
-    //this.props.onSubmit(/* data */);
+    //send data
+    this.props.onSubmit();
   }
 
   render() {
