@@ -17,13 +17,14 @@ class List extends Component {
   getList() {
     return [
       { id: 101, title: 'first note', content: 'Hi! Let me introduce this note.', tags: null },
+      { id: 110, title: 'last note', content: 'or not so important', tags: null },
       { id: 102, title: 'second note', content: 'What do people write in notes?', tags: null },
-      { id: 103, title: 'third note', content: 'Some important info', tags: null },
-      { id: 110, title: 'last note', content: 'or not so important', tags: null }
+      { id: 103, title: 'third note', content: 'Some important info', tags: null }
     ];
   }
 
   showNoteModal = () => {
+
     this.setState({ isAddingNewNote: true });
   }
 
@@ -32,9 +33,14 @@ class List extends Component {
   }
 
   addNewNote(data) {
-    let newNoteData = { id: 104, title: 'no number note', content: 'new note', tags: null };
+    data.id = this.getLastNoteId() + 1;
+
     this.setState({ isAddingNewNote: false });
-    this.state.list.unshift(newNoteData);
+    this.state.list.unshift(data);
+  }
+
+  getLastNoteId() {
+    return Math.max.apply(Math, this.state.list.map(o => o.id));
   }
 
   render() {

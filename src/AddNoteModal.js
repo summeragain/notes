@@ -8,6 +8,8 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 class AddNoteButton extends Component {
   constructor(props) {
     super(props);
+
+    this.form = {};
   }
 
   close() {
@@ -15,9 +17,12 @@ class AddNoteButton extends Component {
   }
 
   addNote() {
-    //todo: get data
-    //send data
-    this.props.onSubmit();
+    let data = {
+      title: this.form.title.value,
+      content: this.form.content.value,
+      tags: this.form.tags.value
+    };
+    this.props.onSubmit(data);
   }
 
   render() {
@@ -32,11 +37,11 @@ class AddNoteButton extends Component {
             <Modal.Body>
               <FormGroup controlId="formControlsTextarea">
                 <ControlLabel>Title</ControlLabel>
-                <FormControl componentClass="input" inputRef={this.props.title} placeholder="Write a title" />
+                <FormControl componentClass="input" inputRef={title => this.form.title = title} placeholder="Write a title" />
                 <ControlLabel>Content</ControlLabel>
-                <FormControl componentClass="textarea" inputRef={this.props.content} placeholder="textarea" />
+                <FormControl componentClass="textarea" inputRef={content => this.form.content = content} placeholder="textarea" />
                 <ControlLabel>Tags</ControlLabel>
-                <FormControl componentClass="input" inputRef={this.props.tags} placeholder="tags" />
+                <FormControl componentClass="input" inputRef={tags => this.form.tags = tags} placeholder="tags" />
               </FormGroup>
             </Modal.Body>
 
