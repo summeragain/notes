@@ -36,11 +36,19 @@ class List extends Component {
     this.setState({ isAddingNewNote: false });
   }
 
-  addNewNote(data) {
-    data.id = this.getLastNoteId() + 1;
+  addOrEditNote(data) {
+    if (!data.id) {
+      data.id = this.getLastNoteId() + 1;
+    }
 
     this.setState({ isAddingNewNote: false });
-    this.state.list.unshift(data);
+
+    let index = this.state.list.findIndex(o => o.id === data.id);
+    if (index === -1) {
+      this.state.list.unshift(data);
+    } else {
+      this.state.list.splice(index, 1, data);
+    }
   }
 
   getLastNoteId() {
@@ -56,7 +64,12 @@ class List extends Component {
       <div className="container">
         <div className="menu-bar">
           <Button onClick={this.showNoteModal}>+</Button>
-          <AddNoteModal onClose={this.hideNoteModal} visible={this.state.isAddingNewNote} noteData={this.state.noteData} onSubmit={(data) => this.addNewNote(data)} />
+          {
+            this.state.isAddingNewNote ?
+              <AddNoteModal onClose={this.hideNoteModal} noteData={this.state.noteData}
+                onSubmit={(data) => this.addOrEditNote(data)} /> :
+              null
+          }
         </div>
         <div className="list-wrapper">
           {listItems}

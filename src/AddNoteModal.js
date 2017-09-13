@@ -10,6 +10,7 @@ class AddNoteButton extends Component {
     super(props);
 
     this.form = {};
+    this.note = this.props.noteData || {};
   }
 
   close() {
@@ -18,6 +19,7 @@ class AddNoteButton extends Component {
 
   addNote() {
     let data = {
+      id: this.note.id || null,
       title: this.form.title.value,
       content: this.form.content.value,
       tags: this.form.tags.value
@@ -28,30 +30,28 @@ class AddNoteButton extends Component {
   render() {
     return (
       <div>
-        {this.props.visible ?
-          <Modal.Dialog className="add-note">
-            <Modal.Header>
-              <Modal.Title>Modal title</Modal.Title>
-            </Modal.Header>
+        <Modal.Dialog className="add-note">
+          <Modal.Header>
+            <Modal.Title>Modal title</Modal.Title>
+          </Modal.Header>
 
-            <Modal.Body>
-              <FormGroup controlId="formControlsTextarea">
-                <ControlLabel>Title</ControlLabel>
-                <FormControl componentClass="input" inputRef={title => this.form.title = title} placeholder="Write a title" defaultValue={this.props.noteData.id} />
-                <ControlLabel>Content</ControlLabel>
-                <FormControl componentClass="textarea" inputRef={content => this.form.content = content} placeholder="textarea" defaultValue={this.props.noteData.content} />
-                <ControlLabel>Tags</ControlLabel>
-                <FormControl componentClass="input" inputRef={tags => this.form.tags = tags} placeholder="tags" defaultValue={this.props.noteData.tags} />
-              </FormGroup>
-            </Modal.Body>
+          <Modal.Body>
+            <FormGroup controlId="formControlsTextarea">
+              <ControlLabel>Title</ControlLabel>
+              <FormControl componentClass="input" inputRef={title => this.form.title = title} placeholder="Write a title" defaultValue={this.note.title} />
+              <ControlLabel>Content</ControlLabel>
+              <FormControl componentClass="textarea" inputRef={content => this.form.content = content} placeholder="textarea" defaultValue={this.note.content} />
+              <ControlLabel>Tags</ControlLabel>
+              <FormControl componentClass="input" inputRef={tags => this.form.tags = tags} placeholder="tags" defaultValue={this.note.tags} />
+            </FormGroup>
+          </Modal.Body>
 
-            <Modal.Footer>
-              <Button onClick={() => this.close()}>Close</Button>
-              <Button bsStyle="primary" onClick={() => this.addNote()}>Add note</Button>
-            </Modal.Footer>
+          <Modal.Footer>
+            <Button onClick={() => this.close()}>Close</Button>
+            <Button bsStyle="primary" onClick={() => this.addNote()}>{this.note.id ? "Update" : "Add note"}</Button>
+          </Modal.Footer>
 
-          </Modal.Dialog>
-          : null}
+        </Modal.Dialog>
       </div>
     );
   }
