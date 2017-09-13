@@ -37,11 +37,11 @@ class AddNoteButton extends Component {
             <Modal.Body>
               <FormGroup controlId="formControlsTextarea">
                 <ControlLabel>Title</ControlLabel>
-                <FormControl componentClass="input" inputRef={title => this.form.title = title} placeholder="Write a title" />
+                <FormControl componentClass="input" inputRef={title => this.form.title = title} placeholder="Write a title" defaultValue={this.props.noteData.id} />
                 <ControlLabel>Content</ControlLabel>
-                <FormControl componentClass="textarea" inputRef={content => this.form.content = content} placeholder="textarea" />
+                <FormControl componentClass="textarea" inputRef={content => this.form.content = content} placeholder="textarea" defaultValue={this.props.noteData.content} />
                 <ControlLabel>Tags</ControlLabel>
-                <FormControl componentClass="input" inputRef={tags => this.form.tags = tags} placeholder="tags" />
+                <FormControl componentClass="input" inputRef={tags => this.form.tags = tags} placeholder="tags" defaultValue={this.props.noteData.tags} />
               </FormGroup>
             </Modal.Body>
 

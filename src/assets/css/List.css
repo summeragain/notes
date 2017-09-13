@@ -10,6 +10,11 @@ body {
     height: 250px;
     -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
+    .note-wrapper .white-panel:hover {
+      cursor: pointer; }
+      .note-wrapper .white-panel:hover .note-title {
+        background: #ff865c;
+        color: #f4f4f4; }
     .note-wrapper .white-panel .note-title {
       color: #ff865c;
       background: #f4f4f4;

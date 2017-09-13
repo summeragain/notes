@@ -10,6 +10,7 @@ class List extends Component {
 
     this.state = {
       isAddingNewNote: false,
+      noteData: null,
       list: this.getList()
     };
   }
@@ -23,8 +24,11 @@ class List extends Component {
     ];
   }
 
-  showNoteModal = () => {
-
+  showNoteModal = (id) => {
+    console.log(id);
+    if (id) {
+      this.setState({ noteData: this.state.list.find(o => o.id === id) });
+    }
     this.setState({ isAddingNewNote: true });
   }
 
@@ -45,14 +49,14 @@ class List extends Component {
 
   render() {
     let listItems = this.state.list.map((note) =>
-      <Note note={note} key={note.id} />
+      <Note note={note} key={note.id} onClick={() => this.showNoteModal(note.id)} />
     );
 
     return (
       <div className="container">
         <div className="menu-bar">
           <Button onClick={this.showNoteModal}>+</Button>
-          <AddNoteModal onClose={this.hideNoteModal} visible={this.state.isAddingNewNote} onSubmit={(data) => this.addNewNote(data)} />
+          <AddNoteModal onClose={this.hideNoteModal} visible={this.state.isAddingNewNote} noteData={this.state.noteData} onSubmit={(data) => this.addNewNote(data)} />
         </div>
         <div className="list-wrapper">
           {listItems}
