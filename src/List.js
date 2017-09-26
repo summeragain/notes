@@ -55,9 +55,16 @@ class List extends Component {
     return Math.max.apply(Math, this.state.list.map(o => o.id));
   }
 
+  deleteNote = (id) => {
+    let index = this.state.list.findIndex(o => o.id === id);
+    if (index !== -1) {
+      this.state.list.splice(index, 1);
+      this.setState({ list: this.state.list });
+    }
+  }
   render() {
     let listItems = this.state.list.map((note) =>
-      <Note note={note} key={note.id} onClick={() => this.showNoteModal(note.id)} />
+      <Note note={note} key={note.id} onClick={() => this.showNoteModal(note.id)} onDelete={() => this.deleteNote(note.id)} />
     );
 
     return (
